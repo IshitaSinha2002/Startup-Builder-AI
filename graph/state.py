@@ -24,11 +24,24 @@ class Milestone(BaseModel):
     key_tasks: list[str]
     success_criteria: list[str]
 
+class MilestonePlan(BaseModel):
+    milestones: list[Milestone]
+
+class RoadmapItem(BaseModel):
+    phase: str
+    timeline: str
+    priority: str
+    objectives: list[str]
+    dependencies: list[str]
+
+class RoadmapPlan(BaseModel):
+    roadmap: list[RoadmapItem]
+
 class StartupState(TypedDict, total=False):
     startup_idea: str
     startup_analysis: StartupAnalysis
     mvp_strategy: MVPStrategy
     milestones: list[Milestone]
-    roadmap: list
+    roadmap: list[RoadmapItem]
     hiring_plan: list
     final_plan: dict
