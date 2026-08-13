@@ -46,6 +46,13 @@ class HiringRole(BaseModel):
 class HiringPlan(BaseModel):
     roles: list[HiringRole]
 
+class FinalStartupPlan(BaseModel):
+    executive_summary: str
+    startup_direction: str
+    immediate_priorities: list[str]
+    key_risks: list[str]
+    next_steps: list[str]
+
 class StartupState(TypedDict, total=False):
     startup_idea: str
     startup_analysis: StartupAnalysis
@@ -53,4 +60,4 @@ class StartupState(TypedDict, total=False):
     milestones: list[Milestone]
     roadmap: list[RoadmapItem]
     hiring_plan: HiringPlan
-    final_plan: dict
+    final_plan: FinalStartupPlan
