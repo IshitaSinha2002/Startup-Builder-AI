@@ -37,11 +37,20 @@ class RoadmapItem(BaseModel):
 class RoadmapPlan(BaseModel):
     roadmap: list[RoadmapItem]
 
+class HiringRole(BaseModel):
+    role: str
+    responsibilities: list[str]
+    hiring_stage: str
+    reason: str
+
+class HiringPlan(BaseModel):
+    roles: list[HiringRole]
+
 class StartupState(TypedDict, total=False):
     startup_idea: str
     startup_analysis: StartupAnalysis
     mvp_strategy: MVPStrategy
     milestones: list[Milestone]
     roadmap: list[RoadmapItem]
-    hiring_plan: list
+    hiring_plan: HiringPlan
     final_plan: dict
