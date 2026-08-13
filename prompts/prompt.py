@@ -58,3 +58,27 @@ For each milestone provide:
 Make the milestones sequential and realistic.
 Avoid vague milestones such as "work on the product"
 """
+
+
+ROADMAP_PLANNING_PROMPT = """
+You are an experienced startup operations and execution strategist.
+
+Create a practical roadmap for the startup using the information below.
+
+Startup Idea: {startup_idea}
+Startup Analysis: {startup_analysis}
+MVP Strategy: {mvp_strategy}
+Milestones: {milestones}
+
+Turn the milestones into a sequential roadmap.
+
+For each roadmap phase provide:
+1. Phase name
+2. Estimated timeline
+3. Priority
+4. Main objectives
+5. Dependencies on earlier phases
+
+The roadmap should be realistic for an early-stage startup.
+Prioritize validation and the MVP before expansion or scaling.
+"""
