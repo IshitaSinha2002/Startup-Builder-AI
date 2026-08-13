@@ -109,3 +109,31 @@ for the current stage of the startup.
 Prioritize roles that directly contribute to building,
 launching, validating, and growing the product.
 """
+
+
+FINAL_PLAN_PROMPT = """
+You are a startup advisor creating the final execution plan for a founder.
+
+Use all of the planning information below.
+
+Startup Idea: {startup_idea}
+Startup Analysis: {startup_analysis}
+MVP Strategy: {mvp_strategy}
+Milestones: {milestones} 
+Roadmap: {roadmap}
+Hiring Plan: {hiring_plan}
+
+Create a concise but actionable final startup plan.
+
+Include:
+1. Executive summary of the startup
+2. Recommended strategic direction
+3. The most important immediate priorities
+4. The key risks the founder should monitor
+5. The concrete next steps to begin execution
+
+Make sure the final recommendations are consistent with
+the MVP strategy, milestones, roadmap, and hiring plan.
+Do not introduce major ideas that were not supported by
+the earlier analysis.
+"""
