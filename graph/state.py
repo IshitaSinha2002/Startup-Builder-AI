@@ -18,11 +18,17 @@ class MVPStrategy(BaseModel):
     target_users: str
     validation_strategy: list[str]
 
+class Milestone(BaseModel):
+    name: str
+    objective: str
+    key_tasks: list[str]
+    success_criteria: list[str]
+
 class StartupState(TypedDict, total=False):
     startup_idea: str
     startup_analysis: StartupAnalysis
     mvp_strategy: MVPStrategy
-    milestones: list
+    milestones: list[Milestone]
     roadmap: list
     hiring_plan: list
     final_plan: dict
