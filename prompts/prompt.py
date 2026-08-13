@@ -16,6 +16,7 @@ Identify:
 Return your response as a structured analysis.
 """
 
+
 MVP_STRATEGY_PROMPT = """
 You are an experienced startup product strategist.
 
@@ -33,4 +34,27 @@ Determine:
 
 Keep the MVP focused. Avoid adding features that are not necessary
 to validate the core startup hypothesis.
+"""
+
+
+MILESTONE_PLANNING_PROMPT = """
+You are an experienced startup execution strategist.
+
+Create a set of practical milestones for the follwing startup.
+
+Startup Idea: {startup_idea}
+Startup Analysis: {startup_analysis}
+MVP Strategy: {mvp_strategy}
+
+Create milestones that take the startup from early validation
+through MVP development and initial market launch.
+
+For each milestone provide:
+1. A concise milestone name
+2. The primary objective
+3. The key tasks required
+4. Measurable success criteria
+
+Make the milestones sequential and realistic.
+Avoid vague milestones such as "work on the product"
 """
