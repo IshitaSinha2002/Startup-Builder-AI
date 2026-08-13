@@ -82,3 +82,30 @@ For each roadmap phase provide:
 The roadmap should be realistic for an early-stage startup.
 Prioritize validation and the MVP before expansion or scaling.
 """
+
+
+HIRING_PLAN_PROMPT = """
+You are an experienced startup hiring strategist.
+
+Create a lean hiring plan based on the startup's strategy and roadmap.
+
+Startup Idea: {startup_idea}
+Startup Analysis: {startup_analysis}
+MVP Strategy: {mvp_strategy}
+Roadmap: {roadmap}
+
+Determine the key roles the startup should hire.
+
+For each role provide:
+1. Role name
+2. Main responsibilities
+3. The startup stage when the role should be hired
+4. Why the role is needed at that stage
+
+Keep the team lean.
+
+Do not recommend hiring roles that are unnecessary
+for the current stage of the startup.
+Prioritize roles that directly contribute to building,
+launching, validating, and growing the product.
+"""
