@@ -9,14 +9,16 @@ from graph.state import (
     MVPStrategy,
     MilestonePlan,
     RoadmapPlan,
-    HiringPlan
+    HiringPlan,
+    FinalStartupPlan
 )
-from prompts.prompts import (
+from prompts.prompt import (
     STARTUP_ANALYSIS_PROMPT,
     MVP_STRATEGY_PROMPT,
     MILESTONE_PLANNING_PROMPT,
     ROADMAP_PLANNING_PROMPT,
-    HIRING_PLAN_PROMPT
+    HIRING_PLAN_PROMPT,
+    FINAL_PLAN_PROMPT
 )
 
 load_dotenv()
@@ -31,6 +33,7 @@ mvp_llm = llm.with_structured_output(MVPStrategy)
 milestone_llm = llm.with_structured_output(MilestonePlan)
 roadmap_llm = llm.with_structured_output(RoadmapPlan)
 hiring_llm = llm.with_structured_output(HiringPlan)
+final_llm = llm.with_structured_output(FinalStartupPlan)
 
 def analyze_startup(state: StartupState):
     startup_idea = state["startup_idea"]
@@ -119,4 +122,33 @@ def plan_hiring(state: StartupState):
 
     return {
         "hiring_plan": response
+    }
+
+def build_final_plan(state: StartupState):
+    startup_idea = state["startup_idea"]
+    startup_analysis = state["startup_analysis"]
+    mvp_strategy = state["mvp_strategy"]
+    milestones = state["milestones"]
+    roadmap = state["roadmap"]
+    hiring_plan = state["hiring_plan"]
+
+    prompt = FINAL_PLAN_PROMPT.format(
+        startup_idea=startup_idea,
+        startup_analysis=startup_analysis.model_dump(),
+        mvp_strategy=mvp_strategy.model_dump(),
+        milestones=[
+            milestone.model_dump()
+            for milestone in milestones
+        ],
+        roadmap=[
+            item.model_dump()
+            for item in roadmap
+        ],
+        hiring_plan=hiring_plan.model_dump()
+    )
+
+    response = final_llm.invoke(prompt)
+
+    return {
+        "final_plan": response
     }
